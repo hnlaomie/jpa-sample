@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+    <display-name>RESTEasy Seam Integration Sample</display-name>
+    <description>
+		<![CDATA[RESTEasy Seam Integration Sample]]>
+    </description>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- CONTEXT PARAMS                                                     -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- javax.faces                                    -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- JSF Libraries Setting - Using WAR Bundles -->
+    <context-param>
+        <param-name>
+			org.jboss.jbossfaces.WAR_BUNDLES_JSF_IMPL
+        </param-name>
+        <param-value>true</param-value>
+    </context-param>
+	<!-- Config Files -->
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>
+			<![CDATA[/WEB-INF/faces/faces-beans.xml
+			,/WEB-INF/faces/faces-config.xml
+			,/WEB-INF/faces/faces-navigations.xml]]>
+        </param-value>
+    </context-param>
+	<!-- State Saving -->
+    <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
+	<!-- Default Suffix -->
+    <context-param>
+        <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+        <param-value>.xhtml</param-value>
+    </context-param>
+	<!-- Debug Output -->
+    <context-param>
+        <param-name>com.sun.faces.validateXml</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>com.sun.faces.verifyObjects</param-name>
+        <param-value>true</param-value>
+    </context-param>
+	<!-- Facelets development mode (disable in production) -->
+    <context-param>
+        <param-name>facelets.DEVELOPMENT</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <!-- tomahawk taglib -->
+    <context-param>
+        <param-name>facelets.LIBRARIES</param-name>
+        <param-value>/META-INF/tomahawk.taglib.xml</param-value>
+    </context-param>
+    <!-- org.springframework -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/applicationContext-web.xml
+        </param-value>
+    </context-param>
+    <!--
+    <context-param>
+        <param-name>locatorFactorySelector</param-name>
+        <param-value>
+            classpath:spring/web-context-config.xml
+        </param-value>
+    </context-param>
+    <context-param>
+        <param-name>parentContextKey</param-name>
+        <param-value>ComponentSpringContext</param-value>
+    </context-param>
+    -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- FILTERS                                                            -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+    <filter>
+        <filter-name>extensionsFilter</filter-name>
+        <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+        <init-param>
+            <description>Set the size limit for uploaded files.
+                Format: 10 - 10 bytes
+                        10k - 10 KB
+                        10m - 10 MB
+                        1g - 1 GB
+            </description>
+            <param-name>uploadMaxFileSize</param-name>
+            <param-value>100m</param-value>
+        </init-param>
+        <init-param>
+            <description>Set the threshold size - files
+                    below this limit are stored in memory, files above
+                    this limit are stored on disk.
+
+                Format: 10 - 10 bytes
+                        10k - 10 KB
+                        10m - 10 MB
+                        1g - 1 GB
+            </description>
+            <param-name>uploadThresholdSize</param-name>
+            <param-value>100k</param-value>
+        </init-param>
+    </filter>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- FILTER MAPPINGS                                                    -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+    <filter-mapping>
+        <filter-name>extensionsFilter</filter-name>
+        <url-pattern>*.jsf</url-pattern>
+    </filter-mapping>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- LISTENERS                                                          -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+    <!-- org.springframework -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- SERVLETS                                                           -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- javax.faces                                    -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- Faces Servlet -->
+    <servlet>
+        <servlet-name>FacesServlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- SERVLET MAPPINGS                                                   -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- javax.faces                                    -->
+	<!-- ･･････････････････････････････････････････････････････････････ -->
+	<!-- Faces Servlet -->
+    <servlet-mapping>
+        <servlet-name>FacesServlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- Error Pages                                                        -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+	<!-- ================================================================== -->
+	<!--                                                                    -->
+	<!-- welcome-file-list                                                  -->
+	<!--                                                                    -->
+	<!-- ================================================================== -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+    <!-- ================================================================== -->
+    <!--                                                                    -->
+    <!-- RESOURCE-REFS                                                      -->
+    <!--                                                                    -->
+    <!-- ================================================================== -->
+    <!-- DataSource -->
+    <resource-ref>
+        <res-ref-name>jdbc/demoshop</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+</web-app>
