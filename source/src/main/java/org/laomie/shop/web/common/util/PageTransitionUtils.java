@@ -57,14 +57,14 @@ public class PageTransitionUtils {
         String iconUrl = (e instanceof Exception) ? "/image/error.gif"
                 : "/image/warning.gif";
 
-        //String msSeverity = (e instanceof ShopSystemException) ? "エラー!"
+        //String msSeverity = (e instanceof ShopSystemException) ? "Error!"
         String msSeverity = (e instanceof IOException) ? "Error!"
                 : "Warning!";
 
         DecimalFormat decimalFormat = new DecimalFormat("00000000");
         //String msIdentifier = decimalFormat.format(e.getIdentifier().getId());
         String msIdentifier = "msIdentifier";
-        // エラーメッセージ
+
         //String message = e.getDisplayMessage().getText();
         String message = "message";
         
