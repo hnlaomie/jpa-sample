@@ -1,9 +1,9 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.laomie</groupId>
-    <artifactId>simple-shop</artifactId>
+    <artifactId>jpa-sample</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <name>simple-shop</name>
@@ -105,7 +105,7 @@
                     <artifactId>jmxri</artifactId>
                 </exclusion>
             </exclusions>
-      
+
         </dependency>
 
         <!-- DataSource -->
@@ -129,7 +129,7 @@
             <scope>provided</scope>
         </dependency>
 
-		<!-- Hibernate -->
+        <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -137,7 +137,7 @@
             <scope>compile</scope>
         </dependency>
 
-		<!-- JPA -->
+        <!-- JPA -->
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>transaction-api</artifactId>
@@ -150,14 +150,14 @@
             <version>1.0</version>
             <scope>compile</scope>
         </dependency>
-		<!-- Hibernate JPA Provider -->
+        <!-- Hibernate JPA Provider -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
             <scope>compile</scope>
             <exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
+                <!-- Exclude Commons Logging in favor of SLF4j -->
                 <exclusion>
                     <groupId>commons.logging</groupId>
                     <artifactId>commons.logging</artifactId>
@@ -170,7 +170,7 @@
             <version>${hibernate.version}</version>
             <scope>compile</scope>
             <exclusions>
-				<!-- Exclude Commons Logging in favor of SLF4j -->
+                <!-- Exclude Commons Logging in favor of SLF4j -->
                 <exclusion>
                     <groupId>commons.logging</groupId>
                     <artifactId>commons.logging</artifactId>
@@ -196,61 +196,61 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
-		<!-- ============================================== -->
-		<!-- com.sun.facelets                               -->
-		<!-- ============================================== -->
-		<!-- jsf-facelets -->
+        <!-- ============================================== -->
+        <!-- com.sun.facelets                               -->
+        <!-- ============================================== -->
+        <!-- jsf-facelets -->
         <dependency>
             <groupId>com.sun.facelets</groupId>
             <artifactId>jsf-facelets</artifactId>
             <version>1.1.15.B1</version>
             <scope>compile</scope>
         </dependency>
-		<!-- ============================================== -->
-		<!-- javax.servlet                                  -->
-		<!-- ============================================== -->
-		<!-- servlet -->
+        <!-- ============================================== -->
+        <!-- javax.servlet                                  -->
+        <!-- ============================================== -->
+        <!-- servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
-		<!-- ============================================== -->
-		<!-- javax.servlet.jsp                              -->
-		<!-- ============================================== -->
-		<!-- jsp -->
+        <!-- ============================================== -->
+        <!-- javax.servlet.jsp                              -->
+        <!-- ============================================== -->
+        <!-- jsp -->
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>${jsp.version}</version>
             <scope>provided</scope>
         </dependency>
-		<!-- ============================================== -->
-		<!-- javax.el                                       -->
-		<!-- ============================================== -->
-		<!-- el-api -->
+        <!-- ============================================== -->
+        <!-- javax.el                                       -->
+        <!-- ============================================== -->
+        <!-- el-api -->
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
             <version>${jstl.version}</version>
             <scope>provided</scope>
         </dependency>
-		<!-- el-ri -->
+        <!-- el-ri -->
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>el-ri</artifactId>
             <version>${jstl.version}</version>
             <scope>provided</scope>
         </dependency>
-		<!-- myfaces-api -->
+        <!-- myfaces-api -->
         <dependency>
             <groupId>org.apache.myfaces.core</groupId>
             <artifactId>myfaces-api</artifactId>
             <version>${myfaces.version}</version>
             <scope>compile</scope>
         </dependency>
-		<!-- myfaces-impl -->
+        <!-- myfaces-impl -->
         <dependency>
             <groupId>org.apache.myfaces.core</groupId>
             <artifactId>myfaces-impl</artifactId>
@@ -270,26 +270,44 @@
             </exclusions>
         </dependency>
     </dependencies>
-    <repositories>
-        <repository>
-            <id>maven2-repository.dev.java.net</id>
-            <url>http://download.java.net/maven/2</url>
-        </repository>
-        <repository>
-            <id>repository.jboss.org</id>
-            <url>http://repository.jboss.org/maven2</url>
-        </repository>
-        <repository>
-            <id>repository.jboss.com</id>
-            <url>http://repository.jboss.com/maven2</url>
-        </repository>
-        <repository>
-            <id>repo1.maven.org</id>
-            <url>http://repo1.maven.org/maven2</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<url>http://download.java.net/maven/2</url>
+		</repository>
+		<repository>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
+		<repository>
+			<id>repository.jboss.com</id>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
+		<repository>
+			<id>repo1.maven.org</id>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <projectNameTemplate>
+                        ${project.artifactId}
+                    </projectNameTemplate>
+                    <wtpmanifest>true</wtpmanifest>
+                    <wtpapplicationxml>true</wtpapplicationxml>
+                    <wtpversion>2.0</wtpversion>
+                    <manifest>
+                        ${basedir}/src/main/resources/META-INF/MANIFEST.MF
+                    </manifest>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
