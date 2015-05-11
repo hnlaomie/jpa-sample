@@ -1,0 +1,1 @@
+jpa usage for spring+hibernate
